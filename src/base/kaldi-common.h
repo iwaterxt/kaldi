@@ -38,8 +38,6 @@
 #include "base/kaldi-math.h"
 #include "base/timer.h"
 
-
-
 #endif  // KALDI_BASE_KALDI_COMMON_H_
 
 
