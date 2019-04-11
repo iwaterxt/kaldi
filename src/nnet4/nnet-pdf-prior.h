@@ -1,4 +1,4 @@
-// nnet/nnet-pdf-prior.h
+// nnet4/nnet-pdf-prior.h
 
 // Copyright 2013  Brno University of Technology (Author: Karel Vesely)
 
@@ -17,8 +17,8 @@
 // See the Apache 2 License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef KALDI_NNET_NNET_PDF_PRIOR_H_
-#define KALDI_NNET_NNET_PDF_PRIOR_H_
+#ifndef KALDI_NNET4_NNET_PDF_PRIOR_H_
+#define KALDI_NNET4_NNET_PDF_PRIOR_H_
 
 #include <cfloat>
 #include <string>
@@ -30,7 +30,7 @@
 #include "cudamatrix/cu-vector.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 struct PdfPriorOptions {
   std::string class_frame_counts;
@@ -71,7 +71,7 @@ class PdfPrior {
   KALDI_DISALLOW_COPY_AND_ASSIGN(PdfPrior);
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_PDF_PRIOR_H_

@@ -1,4 +1,4 @@
-// nnetbin/nnet-train-mmi-sequential.cc
+// nnet4bin/nnet-train-mmi-sequential.cc
 
 // Copyright 2012-2016  Brno University of Technology (author: Karel Vesely)
 
@@ -29,18 +29,18 @@
 #include "lat/kaldi-lattice.h"
 #include "lat/lattice-functions.h"
 
-#include "nnet/nnet-trnopts.h"
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-activation.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-pdf-prior.h"
-#include "nnet/nnet-utils.h"
+#include "nnet4/nnet-trnopts.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-activation.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-pdf-prior.h"
+#include "nnet4/nnet-utils.h"
 #include "base/timer.h"
 #include "cudamatrix/cu-device.h"
 
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 void LatticeAcousticRescore(const Matrix<BaseFloat> &log_like,
                             const TransitionModel &trans_model,

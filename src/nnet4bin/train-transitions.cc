@@ -1,4 +1,4 @@
-// nnetbin/train-transitions.cc
+// nnet4bin/train-transitions.cc
 
 // Copyright 2015  Brno University of Technology (author: Karel Vesely)
 //           2012  Johns Hopkins University (author:  Daniel Povey)

@@ -1,4 +1,4 @@
-// nnet/nnet-nnet.cc
+// nnet4/nnet-nnet.cc
 
 // Copyright 2011-2016  Brno University of Technology (Author: Karel Vesely)
 
@@ -17,16 +17,16 @@
 // See the Apache 2 License for the specific language governing permissions and
 // limitations under the License.
 
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-parallel-component.h"
-#include "nnet/nnet-multibasis-component.h"
-#include "nnet/nnet-activation.h"
-#include "nnet/nnet-affine-transform.h"
-#include "nnet/nnet-various.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-parallel-component.h"
+#include "nnet4/nnet-multibasis-component.h"
+#include "nnet4/nnet-activation.h"
+#include "nnet4/nnet-affine-transform.h"
+#include "nnet4/nnet-various.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 Nnet::Nnet() {
 }
@@ -516,5 +516,5 @@ void Nnet::SetTrainOptions(const NnetTrainOptions& opts) {
 }
 
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi

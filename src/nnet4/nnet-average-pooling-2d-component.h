@@ -1,4 +1,4 @@
-// nnet/nnet-average-pooling-2d-component.h
+// nnet4/nnet-average-pooling-2d-component.h
 
 // Copyright 2014  Brno University of Technology (author: Karel Vesely)
 //                 Johns Hopkins University (author: Sri Harish Mallidi)
@@ -19,18 +19,18 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_AVERAGE_POOLING_2D_COMPONENT_H_
-#define KALDI_NNET_NNET_AVERAGE_POOLING_2D_COMPONENT_H_
+#ifndef KALDI_NNET4_NNET_AVERAGE_POOLING_2D_COMPONENT_H_
+#define KALDI_NNET4_NNET_AVERAGE_POOLING_2D_COMPONENT_H_
 
 #include <string>
 #include <vector>
 
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-utils.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-utils.h"
 #include "cudamatrix/cu-math.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 /**
  * AveragePoolingComponent :
@@ -203,7 +203,7 @@ class AveragePooling2DComponent : public Component {
         pool_x_step_, pool_y_step_;
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_AVERAGE_POOLING_2D_COMPONENT_H_

@@ -1,4 +1,4 @@
-// nnetbin/nnet-train-perutt.cc
+// nnet4bin/nnet-train-perutt.cc
 
 // Copyright 2011-2014  Brno University of Technology (Author: Karel Vesely)
 
@@ -17,10 +17,10 @@
 // See the Apache 2 License for the specific language governing permissions and
 // limitations under the License.
 
-#include "nnet/nnet-trnopts.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-loss.h"
-#include "nnet/nnet-randomizer.h"
+#include "nnet4/nnet-trnopts.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-loss.h"
+#include "nnet4/nnet-randomizer.h"
 #include "base/kaldi-common.h"
 #include "util/common-utils.h"
 #include "base/timer.h"
@@ -28,7 +28,7 @@
 
 int main(int argc, char *argv[]) {
   using namespace kaldi;
-  using namespace kaldi::nnet1;
+  using namespace kaldi::nnet4;
   typedef kaldi::int32 int32;
 
   try {

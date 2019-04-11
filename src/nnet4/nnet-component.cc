@@ -1,4 +1,4 @@
-// nnet/nnet-component.cc
+// nnet4/nnet-component.cc
 
 // Copyright 2011-2013  Brno University of Technology (Author: Karel Vesely)
 
@@ -21,36 +21,36 @@
 #include <algorithm>
 #include <sstream>
 
-#include "nnet/nnet-component.h"
+#include "nnet4/nnet-component.h"
 
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-activation.h"
-#include "nnet/nnet-kl-hmm.h"
-#include "nnet/nnet-affine-transform.h"
-#include "nnet/nnet-linear-transform.h"
-#include "nnet/nnet-rbm.h"
-#include "nnet/nnet-various.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-activation.h"
+#include "nnet4/nnet-kl-hmm.h"
+#include "nnet4/nnet-affine-transform.h"
+#include "nnet4/nnet-linear-transform.h"
+#include "nnet4/nnet-rbm.h"
+#include "nnet4/nnet-various.h"
 
-#include "nnet/nnet-convolutional-component.h"
-#include "nnet/nnet-average-pooling-component.h"
-#include "nnet/nnet-max-pooling-component.h"
+#include "nnet4/nnet-convolutional-component.h"
+#include "nnet4/nnet-average-pooling-component.h"
+#include "nnet4/nnet-max-pooling-component.h"
 
-#include "nnet/nnet-convolutional-2d-component.h"
-#include "nnet/nnet-average-pooling-2d-component.h"
-#include "nnet/nnet-max-pooling-2d-component.h"
+#include "nnet4/nnet-convolutional-2d-component.h"
+#include "nnet4/nnet-average-pooling-2d-component.h"
+#include "nnet4/nnet-max-pooling-2d-component.h"
 
-#include "nnet/nnet-lstm-projected.h"
-#include "nnet/nnet-blstm-projected.h"
-#include "nnet/nnet-recurrent.h"
+#include "nnet4/nnet-lstm-projected.h"
+#include "nnet4/nnet-blstm-projected.h"
+#include "nnet4/nnet-recurrent.h"
 
-#include "nnet/nnet-sentence-averaging-component.h"
-#include "nnet/nnet-frame-pooling-component.h"
-#include "nnet/nnet-parallel-component.h"
-#include "nnet/nnet-multibasis-component.h"
-#include "nnet/nnet-parametric-relu.h"
+#include "nnet4/nnet-sentence-averaging-component.h"
+#include "nnet4/nnet-frame-pooling-component.h"
+#include "nnet4/nnet-parallel-component.h"
+#include "nnet4/nnet-multibasis-component.h"
+#include "nnet4/nnet-parametric-relu.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 const struct Component::key_value Component::kMarkerMap[] = {
   { Component::kAffineTransform, "<AffineTransform>" },
@@ -284,5 +284,5 @@ void Component::Write(std::ostream &os, bool binary) const {
 }
 
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi

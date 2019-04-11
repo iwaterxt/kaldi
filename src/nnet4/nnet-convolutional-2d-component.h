@@ -1,4 +1,4 @@
-// nnet/nnet-convolutional-2d-component.h
+// nnet4/nnet-convolutional-2d-component.h
 
 // Copyright 2014-2015  Johns Hopkins University (author: Sri Harish Mallidi)
 //                      Brno University of Technology (author: Karel Vesely),
@@ -20,18 +20,18 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_CONVOLUTIONAL_2D_COMPONENT_H_
-#define KALDI_NNET_NNET_CONVOLUTIONAL_2D_COMPONENT_H_
+#ifndef KALDI_NNET4_NNET_CONVOLUTIONAL_2D_COMPONENT_H_
+#define KALDI_NNET4_NNET_CONVOLUTIONAL_2D_COMPONENT_H_
 
 #include <string>
 #include <vector>
 
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-various.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-various.h"
 #include "cudamatrix/cu-math.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 /**
  * Convolutional2DComponent implements convolution over 2-axis (frequency and temporal)
@@ -489,7 +489,7 @@ class Convolutional2DComponent : public UpdatableComponent {
   CuVector<BaseFloat> in_diff_summands_;
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_CONVOLUTIONAL_2D_COMPONENT_H_

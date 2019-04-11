@@ -1,4 +1,4 @@
-// nnet/nnet-max-pooling-component.h
+// nnet4/nnet-max-pooling-component.h
 
 // Copyright 2014  Brno University of Technology (author: Karel Vesely)
 
@@ -18,8 +18,8 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_MAX_POOLING_COMPONENT_H_
-#define KALDI_NNET_NNET_MAX_POOLING_COMPONENT_H_
+#ifndef KALDI_NNET4_NNET_MAX_POOLING_COMPONENT_H_
+#define KALDI_NNET4_NNET_MAX_POOLING_COMPONENT_H_
 
 #include <string>
 #include <vector>
@@ -29,7 +29,7 @@
 #include "cudamatrix/cu-math.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 /**
  * MaxPoolingComponent :
@@ -170,7 +170,7 @@ class MaxPoolingComponent : public Component {
         pool_stride_;  // stride used to slice input to a vector of matrices
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_MAX_POOLING_COMPONENT_H_

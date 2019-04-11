@@ -1,4 +1,4 @@
-// nnet/nnet-parametric-relu.h
+// nnet4/nnet-parametric-relu.h
 
 // Copyright 2016 Brno University of Technology (author: Murali Karthick B)
 //           2011-2014  Brno University of Technology (author: Karel Vesely)
@@ -19,17 +19,17 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_PARAMETRIC_RELU_H_
-#define KALDI_NNET_NNET_PARAMETRIC_RELU_H_
+#ifndef KALDI_NNET4_NNET_PARAMETRIC_RELU_H_
+#define KALDI_NNET4_NNET_PARAMETRIC_RELU_H_
 
 #include <string>
 
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-utils.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-utils.h"
 #include "cudamatrix/cu-math.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 class ParametricRelu : public UpdatableComponent {
  public:
@@ -207,7 +207,7 @@ class ParametricRelu : public UpdatableComponent {
   BaseFloat beta_learn_rate_coef_;
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_PARAMETRIC_RELU_H_

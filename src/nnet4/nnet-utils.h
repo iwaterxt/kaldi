@@ -1,4 +1,4 @@
-// nnet/nnet-utils.h
+// nnet4/nnet-utils.h
 
 // Copyright 2015  Brno University of Technology (author: Karel Vesely)
 
@@ -18,8 +18,8 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_UTILS_H_
-#define KALDI_NNET_NNET_UTILS_H_
+#ifndef KALDI_NNET4_NNET_UTILS_H_
+#define KALDI_NNET4_NNET_UTILS_H_
 
 #include <string>
 #include <vector>
@@ -33,7 +33,7 @@
 #include "hmm/transition-model.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 
 /**
@@ -311,7 +311,7 @@ void PosteriorToPdfMatrix(const Posterior &post,
 }
 
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_UTILS_H_

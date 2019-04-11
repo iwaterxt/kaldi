@@ -1,4 +1,4 @@
-// nnet/nnet-activation.h
+// nnet4/nnet-activation.h
 
 // Copyright 2011-2016  Brno University of Technology (author: Karel Vesely)
 
@@ -18,21 +18,21 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_ACTIVATION_H_
-#define KALDI_NNET_NNET_ACTIVATION_H_
+#ifndef KALDI_NNET4_NNET_ACTIVATION_H_
+#define KALDI_NNET4_NNET_ACTIVATION_H_
 
 #include <string>
 #include <vector>
 #include <cmath>
 
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-utils.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-utils.h"
 #include "cudamatrix/cu-math.h"
 #include "cudamatrix/cu-rand.h"
 #include "util/text-utils.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 class Softmax : public Component {
  public:
@@ -366,7 +366,7 @@ class Dropout : public Component {
                                       // 1 = keep neuron, 0 = drop neuron,
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_ACTIVATION_H_

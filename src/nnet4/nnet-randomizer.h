@@ -1,4 +1,4 @@
-// nnet/nnet-randomizer.h
+// nnet4/nnet-randomizer.h
 
 // Copyright 2013  Brno University of Technology (author: Karel Vesely)
 
@@ -18,8 +18,8 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_RANDOMIZER_H_
-#define KALDI_NNET_NNET_RANDOMIZER_H_
+#ifndef KALDI_NNET4_NNET_RANDOMIZER_H_
+#define KALDI_NNET4_NNET_RANDOMIZER_H_
 
 #include <utility>
 #include <vector>
@@ -30,7 +30,7 @@
 #include "cudamatrix/cu-math.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 /**
  * Configuration variables that affect how frame-level shuffling is done.
@@ -268,7 +268,7 @@ typedef StdVectorRandomizer<int32> Int32VectorRandomizer;
 typedef StdVectorRandomizer<std::vector<std::pair<int32, BaseFloat> > > PosteriorRandomizer;
 
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
-#endif  // KALDI_NNET_NNET_RANDOMIZER_H_
+#endif  // KALDI_NNET4_NNET_RANDOMIZER_H_

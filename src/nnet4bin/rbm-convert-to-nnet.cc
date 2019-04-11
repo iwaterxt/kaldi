@@ -1,4 +1,4 @@
-// nnetbin/rbm-convert-to-nnet.cc
+// nnet4bin/rbm-convert-to-nnet.cc
 
 // Copyright 2009-2011  Microsoft Corporation
 
@@ -19,13 +19,13 @@
 
 #include "base/kaldi-common.h"
 #include "util/common-utils.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-rbm.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-rbm.h"
 
 int main(int argc, char *argv[]) {
   try {
     using namespace kaldi;
-    using namespace kaldi::nnet1;
+    using namespace kaldi::nnet4;
     typedef kaldi::int32 int32;
 
     const char *usage =

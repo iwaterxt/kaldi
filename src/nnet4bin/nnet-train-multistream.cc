@@ -1,4 +1,4 @@
-// nnetbin/nnet-train-multistream.cc
+// nnet4bin/nnet-train-multistream.cc
 
 // Copyright 2015-2016  Brno University of Technology (Author: Karel Vesely)
 //           2014  Jiayu DU (Jerry), Wei Li
@@ -20,10 +20,10 @@
 
 #include <numeric>
 
-#include "nnet/nnet-trnopts.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-loss.h"
-#include "nnet/nnet-randomizer.h"
+#include "nnet4/nnet-trnopts.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-loss.h"
+#include "nnet4/nnet-randomizer.h"
 #include "base/kaldi-common.h"
 #include "util/common-utils.h"
 #include "base/timer.h"
@@ -107,7 +107,7 @@ bool ReadData(SequentialBaseFloatMatrixReader& feature_reader,
 
 int main(int argc, char *argv[]) {
   using namespace kaldi;
-  using namespace kaldi::nnet1;
+  using namespace kaldi::nnet4;
   typedef kaldi::int32 int32;
 
   try {

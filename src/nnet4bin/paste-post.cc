@@ -1,4 +1,4 @@
-// nnetbin/paste-post.cc
+// nnet4bin/paste-post.cc
 
 // Copyright 2015       Brno University of Technology (Author: Karel Vesely)
 
@@ -22,7 +22,7 @@
 #include "base/io-funcs.h"
 #include "util/common-utils.h"
 #include "hmm/posterior.h"
-#include "nnet/nnet-utils.h"
+#include "nnet4/nnet-utils.h"
 
 /** @brief Combines 2 or more streams with NN-training targets into single one.
  *  This is handy when training NN with more than one output layer (softmax).
@@ -31,7 +31,7 @@
  */
 int main(int argc, char *argv[]) {
   using namespace kaldi;
-  using namespace kaldi::nnet1;
+  using namespace kaldi::nnet4;
   typedef kaldi::int32 int32;
   try {
     const char *usage =

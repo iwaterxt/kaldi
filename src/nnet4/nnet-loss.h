@@ -1,4 +1,4 @@
-// nnet/nnet-loss.h
+// nnet4/nnet-loss.h
 
 // Copyright 2011-2015  Brno University of Technology (author: Karel Vesely)
 
@@ -17,8 +17,8 @@
 // See the Apache 2 License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef KALDI_NNET_NNET_LOSS_H_
-#define KALDI_NNET_NNET_LOSS_H_
+#ifndef KALDI_NNET4_NNET_LOSS_H_
+#define KALDI_NNET4_NNET_LOSS_H_
 
 #include <string>
 #include <vector>
@@ -33,7 +33,7 @@
 #include "hmm/posterior.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 struct LossOptions {
   int32 loss_report_frames; ///< Report loss value every 'report_interval' frames,
@@ -244,7 +244,7 @@ class MultiTaskLoss : public LossItf {
   CuMatrix<BaseFloat>    tgt_mat_;
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_LOSS_H_

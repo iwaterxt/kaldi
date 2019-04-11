@@ -1,4 +1,4 @@
-// nnet/nnet-affine-transform.h
+// nnet4/nnet-affine-transform.h
 
 // Copyright 2011-2014  Brno University of Technology (author: Karel Vesely)
 
@@ -18,17 +18,17 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_AFFINE_TRANSFORM_H_
-#define KALDI_NNET_NNET_AFFINE_TRANSFORM_H_
+#ifndef KALDI_NNET4_NNET_AFFINE_TRANSFORM_H_
+#define KALDI_NNET4_NNET_AFFINE_TRANSFORM_H_
 
 #include <string>
 
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-utils.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-utils.h"
 #include "cudamatrix/cu-math.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 class AffineTransform : public UpdatableComponent {
  public:
@@ -241,7 +241,7 @@ class AffineTransform : public UpdatableComponent {
   BaseFloat max_norm_;
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_AFFINE_TRANSFORM_H_

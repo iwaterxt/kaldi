@@ -18,8 +18,8 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_MATRIX_BUFFER_H_
-#define KALDI_NNET_NNET_MATRIX_BUFFER_H_
+#ifndef KALDI_NNET4_NNET_MATRIX_BUFFER_H_
+#define KALDI_NNET4_NNET_MATRIX_BUFFER_H_
 
 #include <utility>
 #include <vector>
@@ -32,7 +32,7 @@
 
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 struct MatrixBufferOptions {
   int32 matrix_buffer_size;
@@ -226,7 +226,7 @@ void MatrixBuffer::DisposeValue() {
 }
 
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_MATRIX_BUFFER_H_

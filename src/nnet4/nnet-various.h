@@ -1,4 +1,4 @@
-// nnet/nnet-various.h
+// nnet4/nnet-various.h
 
 // Copyright 2012-2016  Brno University of Technology (author: Karel Vesely)
 
@@ -18,8 +18,8 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_VARIOUS_H_
-#define KALDI_NNET_NNET_VARIOUS_H_
+#ifndef KALDI_NNET4_NNET_VARIOUS_H_
+#define KALDI_NNET4_NNET_VARIOUS_H_
 
 #include <string>
 #include <vector>
@@ -32,7 +32,7 @@
 #include "util/text-utils.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 /**
  * Splices the time context of the input features
@@ -512,7 +512,7 @@ class Rescale : public UpdatableComponent {
   CuVector<BaseFloat> scale_data_grad_;
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_VARIOUS_H_

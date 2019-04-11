@@ -1,4 +1,4 @@
-// nnetbin/nnet-set-learnrate.cc
+// nnet4bin/nnet-set-learnrate.cc
 
 // Copyright 2016,  Brno University of Technology
 //                  (author: Katerina Zmolikova, Karel Vesely)
@@ -19,15 +19,15 @@
 // limitations under the License.
 
 #include "util/common-utils.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-affine-transform.h"
-#include "nnet/nnet-activation.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-affine-transform.h"
+#include "nnet4/nnet-activation.h"
 
 int main(int argc, char *argv[]) {
   try {
     using namespace kaldi;
-    using namespace kaldi::nnet1;
+    using namespace kaldi::nnet4;
     typedef kaldi::int32 int32;
 
     const char *usage =

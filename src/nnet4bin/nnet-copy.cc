@@ -1,4 +1,4 @@
-// nnetbin/nnet-copy.cc
+// nnet4bin/nnet-copy.cc
 
 // Copyright 2012-2015  Brno University of Technology (author: Karel Vesely)
 
@@ -19,13 +19,13 @@
 
 #include "base/kaldi-common.h"
 #include "util/common-utils.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-parallel-component.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-parallel-component.h"
 
 int main(int argc, char *argv[]) {
   try {
     using namespace kaldi;
-    using namespace kaldi::nnet1;
+    using namespace kaldi::nnet4;
     typedef kaldi::int32 int32;
 
     const char *usage =

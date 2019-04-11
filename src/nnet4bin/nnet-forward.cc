@@ -1,4 +1,4 @@
-// nnetbin/nnet-forward.cc
+// nnet4bin/nnet-forward.cc
 
 // Copyright 2011-2013  Brno University of Technology (Author: Karel Vesely)
 
@@ -19,9 +19,9 @@
 
 #include <limits>
 
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-loss.h"
-#include "nnet/nnet-pdf-prior.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-loss.h"
+#include "nnet4/nnet-pdf-prior.h"
 #include "base/kaldi-common.h"
 #include "util/common-utils.h"
 #include "base/timer.h"
@@ -29,7 +29,7 @@
 
 int main(int argc, char *argv[]) {
   using namespace kaldi;
-  using namespace kaldi::nnet1;
+  using namespace kaldi::nnet4;
   try {
     const char *usage =
       "Perform forward pass through Neural Network.\n"

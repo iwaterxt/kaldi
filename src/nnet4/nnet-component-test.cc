@@ -1,4 +1,4 @@
-// nnet/nnet-component-test.cc
+// nnet4/nnet-component-test.cc
 // Copyright 2014-2015  Brno University of Technology (author: Karel Vesely),
 //                      The Johns Hopkins University (author: Sri Harish Mallidi)
 
@@ -21,17 +21,17 @@
 #include <fstream>
 #include <algorithm>
 
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-convolutional-component.h"
-#include "nnet/nnet-convolutional-2d-component.h"
-#include "nnet/nnet-max-pooling-component.h"
-#include "nnet/nnet-max-pooling-2d-component.h"
-#include "nnet/nnet-average-pooling-2d-component.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-convolutional-component.h"
+#include "nnet4/nnet-convolutional-2d-component.h"
+#include "nnet4/nnet-max-pooling-component.h"
+#include "nnet4/nnet-max-pooling-2d-component.h"
+#include "nnet4/nnet-average-pooling-2d-component.h"
 #include "util/common-utils.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
   /*
    * Helper functions
@@ -412,7 +412,7 @@ namespace nnet1 {
     delete c;
   }
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 int main() {

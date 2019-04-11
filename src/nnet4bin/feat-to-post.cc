@@ -1,4 +1,4 @@
-// nnetbin/feat-to-post.cc
+// nnet4bin/feat-to-post.cc
 
 // Copyright 2014       Brno University of Technology (Author: Karel Vesely)
 

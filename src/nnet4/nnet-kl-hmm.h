@@ -1,4 +1,4 @@
-// nnet/nnet-kl-hmm.h
+// nnet4/nnet-kl-hmm.h
 
 // Copyright 2013  Idiap Research Institute (Author: David Imseng)
 //                 Karlsruhe Institute of Technology (Author: Ngoc Thang Vu)
@@ -20,19 +20,19 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_KL_HMM_H_
-#define KALDI_NNET_NNET_KL_HMM_H_
+#ifndef KALDI_NNET4_NNET_KL_HMM_H_
+#define KALDI_NNET4_NNET_KL_HMM_H_
 
 #include <vector>
 
-#include "nnet/nnet-component.h"
+#include "nnet4/nnet-component.h"
 #include "cudamatrix/cu-math.h"
 #include "cudamatrix/cu-rand.h"
 #include "matrix/kaldi-vector.h"
 #include "matrix/kaldi-matrix.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 class KlHmm : public Component {
  public:
@@ -148,7 +148,7 @@ class KlHmm : public Component {
   CuMatrix<BaseFloat> kl_inv_q_;
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_KL_HMM_H_

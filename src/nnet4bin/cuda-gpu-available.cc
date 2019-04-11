@@ -1,4 +1,4 @@
-// nnetbin/cuda-gpu-available.cc
+// nnet4bin/cuda-gpu-available.cc
 
 // Copyright 2015 Brno University of Technology (author: Karel Vesely)
 

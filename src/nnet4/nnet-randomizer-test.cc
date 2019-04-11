@@ -17,7 +17,7 @@
 // See the Apache 2 License for the specific language governing permissions and
 // limitations under the License.
 
-#include "nnet/nnet-randomizer.h"
+#include "nnet4/nnet-randomizer.h"
 
 #include <numeric>
 #include <vector>

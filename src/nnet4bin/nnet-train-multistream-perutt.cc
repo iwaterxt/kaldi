@@ -18,10 +18,10 @@
 // See the Apache 2 License for the specific language governing permissions and
 // limitations under the License.
 
-#include "nnet/nnet-trnopts.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-loss.h"
-#include "nnet/nnet-matrix-buffer.h"
+#include "nnet4/nnet-trnopts.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-loss.h"
+#include "nnet4/nnet-matrix-buffer.h"
 
 #include "base/kaldi-common.h"
 #include "util/common-utils.h"
@@ -33,7 +33,7 @@
 
 int main(int argc, char *argv[]) {
   using namespace kaldi;
-  using namespace kaldi::nnet1;
+  using namespace kaldi::nnet4;
   typedef kaldi::int32 int32;
 
   try {

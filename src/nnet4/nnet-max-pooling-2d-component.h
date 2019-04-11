@@ -1,4 +1,4 @@
-// nnet/nnet-max-pooling-2d-component.h
+// nnet4/nnet-max-pooling-2d-component.h
 
 // Copyright 2014  Brno University of Technology (author: Karel Vesely),
 //                 Johns Hopkins University (author: Sri Harish Mallidi)
@@ -19,8 +19,8 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_MAX_POOLING_2D_COMPONENT_H_
-#define KALDI_NNET_NNET_MAX_POOLING_2D_COMPONENT_H_
+#ifndef KALDI_NNET4_NNET_MAX_POOLING_2D_COMPONENT_H_
+#define KALDI_NNET4_NNET_MAX_POOLING_2D_COMPONENT_H_
 
 #include <string>
 #include <vector>
@@ -30,7 +30,7 @@
 #include "cudamatrix/cu-math.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 /**
  * MaxPoolingComponent :
@@ -219,7 +219,7 @@ class MaxPooling2DComponent : public Component {
         pool_x_step_, pool_y_step_;
 };
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 #endif  // KALDI_NNET_NNET_MAX_POOLING_2D_COMPONENT_H_

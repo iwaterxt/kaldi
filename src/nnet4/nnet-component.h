@@ -19,8 +19,8 @@
 
 
 
-#ifndef KALDI_NNET_NNET_COMPONENT_H_
-#define KALDI_NNET_NNET_COMPONENT_H_
+#ifndef KALDI_NNET4_NNET_COMPONENT_H_
+#define KALDI_NNET4_NNET_COMPONENT_H_
 
 #include <iostream>
 #include <string>
@@ -29,10 +29,10 @@
 #include "matrix/matrix-lib.h"
 #include "cudamatrix/cu-matrix.h"
 #include "cudamatrix/cu-vector.h"
-#include "nnet/nnet-trnopts.h"
+#include "nnet4/nnet-trnopts.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 /**
  * Abstract class, building block of the network.
@@ -351,7 +351,7 @@ inline void Component::Backpropagate(const CuMatrixBase<BaseFloat> &in,
 }
 
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
 

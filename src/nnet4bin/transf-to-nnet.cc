@@ -1,4 +1,4 @@
-// nnetbin/transf-to-nnet.cc
+// nnet4bin/transf-to-nnet.cc
 
 // Copyright 2012  Brno University of Technology
 
@@ -19,13 +19,13 @@
 
 #include "base/kaldi-common.h"
 #include "util/common-utils.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-linear-transform.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-linear-transform.h"
 
 int main(int argc, char *argv[]) {
   try {
     using namespace kaldi;
-    using namespace kaldi::nnet1;
+    using namespace kaldi::nnet4;
     typedef kaldi::int32 int32;
 
     const char *usage =

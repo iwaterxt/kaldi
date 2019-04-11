@@ -1,4 +1,4 @@
-// nnet/nnet-loss.cc
+// nnet4/nnet-loss.cc
 
 // Copyright 2011-2015  Brno University of Technology (author: Karel Vesely)
 
@@ -22,13 +22,13 @@
 #include <algorithm>
 #include <iomanip>
 
-#include "nnet/nnet-loss.h"
-#include "nnet/nnet-utils.h"
+#include "nnet4/nnet-loss.h"
+#include "nnet4/nnet-utils.h"
 #include "cudamatrix/cu-math.h"
 #include "hmm/posterior.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 
 /* Xent */
@@ -456,5 +456,5 @@ BaseFloat MultiTaskLoss::AvgLoss() {
   return ans;
 }
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi

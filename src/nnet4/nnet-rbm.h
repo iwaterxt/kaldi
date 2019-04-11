@@ -1,4 +1,4 @@
-// nnet/nnet-rbm.h
+// nnet4/nnet-rbm.h
 
 // Copyright 2012-2013  Brno University of Technology (Author: Karel Vesely)
 
@@ -18,19 +18,19 @@
 // limitations under the License.
 
 
-#ifndef KALDI_NNET_NNET_RBM_H_
-#define KALDI_NNET_NNET_RBM_H_
+#ifndef KALDI_NNET4_NNET_RBM_H_
+#define KALDI_NNET4_NNET_RBM_H_
 
 #include <string>
 
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-nnet.h"
-#include "nnet/nnet-utils.h"
-#include "nnet/nnet-various.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-utils.h"
+#include "nnet4/nnet-various.h"
 #include "cudamatrix/cu-math.h"
 
 namespace kaldi {
-namespace nnet1 {
+namespace nnet4 {
 
 class RbmBase : public Component {
  public:
@@ -427,7 +427,7 @@ class Rbm : public RbmBase {
 
 
 
-}  // namespace nnet1
+}  // namespace nnet4
 }  // namespace kaldi
 
-#endif  // KALDI_NNET_NNET_RBM_H_
+#endif  // KALDI_NNET4_NNET_RBM_H_
