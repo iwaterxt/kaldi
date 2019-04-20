@@ -28,6 +28,9 @@ namespace kaldi{
 namespace nnet4{
 
 
+
+
+
 NnetExample::NnetExample(std::string key, Matrix<BaseFloat>& feature,
 						 Posterior& post, Vector<BaseFloat>& weight){
 	key_ = key;
