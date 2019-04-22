@@ -62,7 +62,7 @@ private:
 	Semaphore full_semaphore_;
 	Semaphore empty_semaphore_;
 
-	std::queue<NnetExample*> examples_;
+	std::vector<NnetExample*> examples_;
 	bool done_;
 
 	KALDI_DISALLOW_COPY_AND_ASSIGN(ExamplesRepository);

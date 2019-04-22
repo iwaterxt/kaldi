@@ -42,7 +42,7 @@ NnetExample::NnetExample(std::string key, Matrix<BaseFloat>& feature,
 
 void ExamplesRepository::AcceptExamples(NnetExample *example) {
   empty_semaphore_.Wait();
-  examples_.push(example);
+  examples_.push_back(example);
   full_semaphore_.Signal();
 }
 
@@ -62,7 +62,7 @@ bool ExamplesRepository::ProvideExamples(NnetExample *example) {
     return false; // no examples to return-- all finished.
   } else {
   	examples = examples_.front();
-  	examples_.pop();
+  	examples_.erase(examples_.begin());
     empty_semaphore_.Signal();
     return true;
   }

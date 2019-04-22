@@ -28,7 +28,6 @@ class DNNDoBackpropParallelClass: public MultiThreadable{
 
 public:
 	DNNDoBackpropParallelClass(const Nnet &nnet,
-							   const Nnet &nnet_transf,
 							   ExamplesRepository* repository,
 							   NnetTrainOptions& trn_opts,
 							   NnetDataRandomizerOptions& rnd_opts,
@@ -46,7 +45,12 @@ public:
 			CuDevice::Instantiate().AllowMultithreading()
 			CuDevice::Instantiate().SelectGpuId(parallel_opts_.use_gpu);
 		#endif
-		CuMatrix<BaseFloat> feats_transf, nnet_out, obj_diff;
+			Nnet nnet_transf;
+			if(parallel_opts_.feature_transform !=""){
+				nnet_transf.Read(parallel_opts_.feature_transform);
+			}
+
+			CuMatrix<BaseFloat> feats_transf, nnet_out, obj_diff;
 	    RandomizerMask randomizer_mask(rnd_opts_);
 	    MatrixRandomizer feature_randomizer(rnd_opts_);
 	    PosteriorRandomizer targets_randomizer(rnd_opts_);
@@ -65,16 +69,16 @@ public:
 
 		while(1){
 
-			NnetExample example;
-			while(repository_->ProvideExamples(&example)){
+			NnetExample* example;
+			while(repository_->ProvideExamples(example)){
 		        if (feature_randomizer.IsFull()) {
 		          // break the loop without calling Next(),
 		          // we keep the 'utt' for next round,
 		          break;
 		        }
-				Matrix<BaseFloat> mat = example.mat_;
-				Posterior targets = example.tgt_;
-				Vector<BaseFloat> weights = example.weight_;
+				Matrix<BaseFloat> mat = example->mat_;
+				Posterior targets = example->tgt_;
+				Vector<BaseFloat> weights = example->weight_;
 
 				nnet_transf_.Feedforward(CuMatrix<BaseFloat>(mat), &feats_transf);
 		        // remove frames with '0' weight from training,
@@ -86,15 +90,15 @@ public:
 		        weights_randomizer.AddData(weights);
 		        num_done++;
 			}
-		    // randomize,
-		    if (!parallel_opts_.crossvalidate && parallel_opts_.randomize) {
+		  // randomize,
+		  if (!parallel_opts_.crossvalidate && parallel_opts_.randomize) {
 		      const std::vector<int32>& mask =
 		      randomizer_mask.Generate(feature_randomizer.NumFrames());
 		      feature_randomizer.Randomize(mask);
 		      targets_randomizer.Randomize(mask);
 		      weights_randomizer.Randomize(mask);
-		    }
-		    for(; !feature_randomizer.Done(); feature_randomizer.Next(),
+		  }
+		  for(; !feature_randomizer.Done(); feature_randomizer.Next(),
 		    								  targets_randomizer.Next(),
 		    								  weights_randomizer.Next()){
 
@@ -134,11 +138,11 @@ public:
 		          }
 		        }
 		        total_frames += nnet_in.NumRows();
-		    }
+		  }
 
-		    if(repository_->ExamplesDone()){
-		    	break;
-		    }
+		  if(repository_->ExamplesDone()){
+		    break;
+		  }
 		}
 
 
@@ -157,7 +161,6 @@ private:
 };
 
 double DNNDoBackpropParallel(const Nnet& nnet,
-						  const Nnet& nnet_transf,
 						  SequentialBaseFloatMatrixReader& feature_reader,
 						  RandomAccessPosteriorReader& targets_reader,
 						  RandomAccessBaseFloatVectorReader& weights_reader,
@@ -171,7 +174,6 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 	int32 num_no_tgt_mat = 0;
 	int32 num_other_error = 0;
 	DNNDoBackpropParallelClass c(nnet,
-								 nnet_transf,
 								 repository,
 								 trn_opts,
 								 rnd_opts,
