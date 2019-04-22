@@ -22,11 +22,12 @@
 #ifndef KALDI_NNET4_NNET_EXAMPLE_H_
 #define KALDI_NNET4_NNET_EXAMPLE_H_
 
-#include <queue>
+
 #include "nnet4/nnet-nnet.h"
 #include "util/table-types.h"
 #include "util/kaldi-semaphore.h"
-
+#include "util/common-utils.h"
+#include "nnet/nnet-randomizer.h"
 
 
 

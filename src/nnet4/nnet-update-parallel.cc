@@ -19,6 +19,7 @@
 #include "nnet4/nnet-update-parallel.h"
 #include "nnet4/nnet-nnet.h"
 #include "util/kaldi-thread.h"
+#include "nnet4/nnet-loss.h"
 
 
 namespace kaldi{
@@ -33,7 +34,7 @@ public:
 							   NnetDataRandomizerOptions& rnd_opts,
 							   NnetParallelTrainOptions& parallel_opts,
 							   std::string target_model_filename):
-			nnet_(nnet), nnet_transf_(nnet_transf),repository_(repository), trn_opts_(trn_opts),
+			nnet_(nnet), repository_(repository), trn_opts_(trn_opts),
 			rnd_opts_(rnd_opts), parallel_opts_(parallel_opts),target_model_filename_(target_model_filename){}
 
 	void operator () (){
@@ -42,7 +43,7 @@ public:
 		typedef kaldi::int32 int32;
 
 		#if HAVE_CUDA == 1
-			CuDevice::Instantiate().AllowMultithreading()
+			CuDevice::Instantiate().AllowMultithreading();
 			CuDevice::Instantiate().SelectGpuId(parallel_opts_.use_gpu);
 		#endif
 			Nnet nnet_transf;
@@ -66,7 +67,8 @@ public:
 	      // 'multitask,<type1>,<dim1>,<weight1>,...,<typeN>,<dimN>,<weightN>'
 	      multitask.InitFromString(parallel_opts_.objective_function);
 	    }
-
+		int32 num_done = 0;
+		int32 total_frames = 0;
 		while(1){
 
 			NnetExample* example;
@@ -166,8 +168,8 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 						  RandomAccessBaseFloatVectorReader& weights_reader,
 						  RandomAccessBaseFloatReader& utt_weights_reader,
 						  NnetTrainOptions& trn_opts,
-						  NnetDataRandomizerOptions rnd_opts,
-						  NnetParallelTrainOptions parallel_opts,
+						  NnetDataRandomizerOptions& rnd_opts,
+						  NnetParallelTrainOptions& parallel_opts,
 						  std::string& target_model_filename){
 
 	ExamplesRepository repository;

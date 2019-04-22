@@ -117,8 +117,8 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 						  RandomAccessBaseFloatVectorReader& weights_reader,
 						  RandomAccessBaseFloatReader& utt_weights_reader,
 						  NnetTrainOptions& trn_opts,
-						  NnetDataRandomizerOptions rnd_opts,
-						  NnetParallelTrainOptions parallel_opts,
+						  NnetDataRandomizerOptions& rnd_opts,
+						  NnetParallelTrainOptions& parallel_opts,
 						  std::string& target_model_filename);
 
 
