@@ -26,8 +26,9 @@
 #include "nnet4/nnet-nnet.h"
 #include "util/table-types.h"
 #include "util/kaldi-semaphore.h"
+#include "base/kaldi-common.h"
 #include "util/common-utils.h"
-#include "nnet/nnet-randomizer.h"
+#include "nnet4/nnet-randomizer.h"
 
 
 

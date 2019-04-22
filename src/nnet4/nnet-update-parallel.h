@@ -26,7 +26,7 @@
 #include "nnet4/nnet-nnet.h"
 #include "nnet4/nnet-trnopts.h"
 #include "nnet4/nnet-example.h"
-#include "nnet/nnet-randomizer.h"
+#include "nnet4/nnet-randomizer.h"
 
 
 namespace kaldi{
