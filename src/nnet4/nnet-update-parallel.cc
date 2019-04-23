@@ -165,7 +165,7 @@ private:
 
 };
 
-double DNNDoBackpropParallel(const Nnet& nnet,
+void DNNDoBackpropParallel(const Nnet& nnet,
 						  SequentialBaseFloatMatrixReader& feature_reader,
 						  RandomAccessPosteriorReader& targets_reader,
 						  RandomAccessBaseFloatVectorReader& weights_reader,
