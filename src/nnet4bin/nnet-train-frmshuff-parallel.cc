@@ -84,11 +84,11 @@ int main(int argc, char *argv[]) {
     RandomAccessPosteriorReader targets_reader(targets_rspecifier);
     RandomAccessBaseFloatVectorReader weights_reader;
     if (parallel_opts.frame_weights != "") {
-      weights_reader.Open(frame_weights);
+      weights_reader.Open(parallel_opts.frame_weights);
     }
     RandomAccessBaseFloatReader utt_weights_reader;
     if (parallel_opts.utt_weights != "") {
-      utt_weights_reader.Open(utt_weights);
+      utt_weights_reader.Open(parallel_opts.utt_weights);
     }
 
     DNNDoBackpropParallel(nnet,
