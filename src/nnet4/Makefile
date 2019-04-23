@@ -12,7 +12,7 @@ TESTFILES = nnet-randomizer-test nnet-component-test
 OBJFILES = nnet-nnet.o nnet-component.o nnet-loss.o \
            nnet-pdf-prior.o nnet-randomizer.o nnet-update-parallel.o
 
-LIBNAME = kaldi-nnet
+LIBNAME = kaldi-nnet4
 
 ADDLIBS = ../cudamatrix/kaldi-cudamatrix.a ../hmm/kaldi-hmm.a \
           ../tree/kaldi-tree.a ../util/kaldi-util.a ../matrix/kaldi-matrix.a \
