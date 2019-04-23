@@ -27,6 +27,7 @@
 #include "nnet4/nnet-trnopts.h"
 #include "nnet4/nnet-example.h"
 #include "nnet4/nnet-randomizer.h"
+#include "nnet4/nnet-loss.h"
 #include "hmm/posterior.h"
 
 
@@ -121,7 +122,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 						  LossOptions& loss_opts,
 						  NnetDataRandomizerOptions& rnd_opts,
 						  NnetParallelTrainOptions& parallel_opts,
-						  std::string& target_model_filename);
+						  std::string target_model_filename);
 
 
 

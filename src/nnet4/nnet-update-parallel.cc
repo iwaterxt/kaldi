@@ -173,7 +173,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 							LossOptions& loss_opts,
 						  NnetDataRandomizerOptions& rnd_opts,
 						  NnetParallelTrainOptions& parallel_opts,
-						  std::string& target_model_filename){
+						  std::string target_model_filename){
 
 	ExamplesRepository repository;
 	int32 num_no_tgt_mat = 0;
@@ -186,7 +186,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 								 target_model_filename);
 
 		MultiThreader<DNNDoBackpropParallelClass> m(parallel_opts.num_threads, c);
-		for(; !feature_reader.Done(); feature_reader.Netx()){
+		for(; !feature_reader.Done(); feature_reader.Next()){
 			std::string utt = feature_reader.Key();
 			Matrix<BaseFloat> mat = feature_reader.Value();
 	        KALDI_VLOG(3) << "Reading " << utt;
@@ -222,7 +222,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 	          if (w == 0.0) continue;  // remove sentence from training,
 	          weights.Scale(w);
 	        }
-			NnetExample example(utt, mat, targets_reader.Value(), weights)
+			NnetExample example(utt, mat, targets_reader.Value(utt), weights);
 
 			repository.AcceptExamples(&example);
 		}
