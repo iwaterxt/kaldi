@@ -18,6 +18,7 @@
 #include <numeric>
 #include "nnet4/nnet-update-parallel.h"
 #include "nnet4/nnet-nnet.h"
+#include "nnet4/nnet-example.h"
 #include "util/kaldi-thread.h"
 #include "nnet4/nnet-loss.h"
 
