@@ -94,12 +94,12 @@ int main(int argc, char *argv[]) {
     }
 
     DNNDoBackpropParallel(nnet,
-    				   nnet_transf,
     				   feature_reader,
     				   targets_reader,
     				   weight_reader,
     				   utt_weightd_reader,
     				   trn_opts,
+               loss_opts,
     				   rnd_opts,
     				   parallel_opts,
     				   target_model_filename);
