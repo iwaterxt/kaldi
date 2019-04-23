@@ -179,7 +179,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 	int32 num_no_tgt_mat = 0;
 	int32 num_other_error = 0;
 	DNNDoBackpropParallelClass c(nnet,
-								 repository,
+								 &repository,
 								 trn_opts,
 								 loss_opts,
 								 rnd_opts,
