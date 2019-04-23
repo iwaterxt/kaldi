@@ -188,8 +188,8 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 
 		MultiThreader<DNNDoBackpropParallelClass> m(parallel_opts.num_threads, c);
 		for(; !feature_reader.Done(); feature_reader.Next()){
-			std::string utt = feature_reader.Key();
-			Matrix<BaseFloat> mat = feature_reader.Value();
+					std::string utt = feature_reader.Key();
+					Matrix<BaseFloat> mat = feature_reader.Value();
 	        KALDI_VLOG(3) << "Reading " << utt;
 	        // check that we have targets,
 	        if (!targets_reader.HasKey(utt)) {
@@ -197,6 +197,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 	          num_no_tgt_mat++;
 	          continue;
 	        }
+					Posterior targets = targets_reader.Value(utt);
 	        // check we have per-frame weights,
 	        if (parallel_opts.frame_weights != "" && !weights_reader.HasKey(utt)) {
 	          KALDI_WARN << utt << ", missing per-frame weights";
@@ -223,7 +224,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 	          if (w == 0.0) continue;  // remove sentence from training,
 	          weights.Scale(w);
 	        }
-			NnetExample example(utt, mat, targets_reader.Value(utt), weights);
+			NnetExample example(utt, mat, targets, weights);
 
 			repository.AcceptExamples(&example);
 		}
