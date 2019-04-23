@@ -31,10 +31,11 @@ public:
 	DNNDoBackpropParallelClass(const Nnet &nnet,
 							   ExamplesRepository* repository,
 							   NnetTrainOptions& trn_opts,
+								 LossOptions& loss_opts,
 							   NnetDataRandomizerOptions& rnd_opts,
 							   NnetParallelTrainOptions& parallel_opts,
 							   std::string target_model_filename):
-			nnet_(nnet), repository_(repository), trn_opts_(trn_opts),
+			nnet_(nnet), repository_(repository), trn_opts_(trn_opts),loss_opts_(loss_opts),
 			rnd_opts_(rnd_opts), parallel_opts_(parallel_opts),target_model_filename_(target_model_filename){}
 
 	void operator () (){
@@ -56,9 +57,9 @@ public:
 	    MatrixRandomizer feature_randomizer(rnd_opts_);
 	    PosteriorRandomizer targets_randomizer(rnd_opts_);
 	    VectorRandomizer weights_randomizer(rnd_opts_);
-	    Xent xent;
-	    Mse mse;
-	    MultiTaskLoss multitask;
+    	Xent xent(loss_opts_);
+    	Mse mse(loss_opts_);
+    	MultiTaskLoss multitask(loss_opts_);
 	    if (0 == parallel_opts_.objective_function.compare(0, 9, "multitask")) {
 	      // objective_function contains something like :
 	      // 'multitask,xent,2456,1.0,mse,440,0.001'
@@ -82,7 +83,7 @@ public:
 				Posterior targets = example->tgt_;
 				Vector<BaseFloat> weights = example->weight_;
 
-				nnet_transf_.Feedforward(CuMatrix<BaseFloat>(mat), &feats_transf);
+				nnet_transf.Feedforward(CuMatrix<BaseFloat>(mat), &feats_transf);
 		        // remove frames with '0' weight from training,
 
 		        // pass data to randomizers,
@@ -156,6 +157,7 @@ private:
 	Nnet nnet_;
 	ExamplesRepository* repository_;
 	NnetTrainOptions trn_opts_;
+	LossOptions loss_opts_;
 	NnetDataRandomizerOptions rnd_opts_;
 	NnetParallelTrainOptions parallel_opts_;
 	std::string target_model_filename_;
@@ -168,6 +170,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 						  RandomAccessBaseFloatVectorReader& weights_reader,
 						  RandomAccessBaseFloatReader& utt_weights_reader,
 						  NnetTrainOptions& trn_opts,
+							LossOptions& loss_opts,
 						  NnetDataRandomizerOptions& rnd_opts,
 						  NnetParallelTrainOptions& parallel_opts,
 						  std::string& target_model_filename){
@@ -182,9 +185,10 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 								 parallel_opts,
 								 target_model_filename);
 
-		MultiThreader<DNNDoBackpropParallel> m(parallel_opts.num_threads, c);
+		MultiThreader<DNNDoBackpropParallelClass> m(parallel_opts.num_threads, c);
 		for(; !feature_reader.Done(); feature_reader.Netx()){
 			std::string utt = feature_reader.Key();
+			Matrix<BaseFloat> mat = feature_reader.Value();
 	        KALDI_VLOG(3) << "Reading " << utt;
 	        // check that we have targets,
 	        if (!targets_reader.HasKey(utt)) {
@@ -193,32 +197,32 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 	          continue;
 	        }
 	        // check we have per-frame weights,
-	        if (frame_weights != "" && !weights_reader.HasKey(utt)) {
+	        if (parallel_opts.frame_weights != "" && !weights_reader.HasKey(utt)) {
 	          KALDI_WARN << utt << ", missing per-frame weights";
 	          num_other_error++;
 	          continue;
 	        }
 	        // check we have per-utterance weights,
-	        if (utt_weights != "" && !utt_weights_reader.HasKey(utt)) {
+	        if (parallel_opts.utt_weights != "" && !utt_weights_reader.HasKey(utt)) {
 	          KALDI_WARN << utt << ", missing per-utterance weight";
 	          num_other_error++;
 	          continue;
 	        }
 	        Vector<BaseFloat> weights;
-	        if (frame_weights != "") {
+	        if (parallel_opts.frame_weights != "") {
 	          weights = weights_reader.Value(utt);
 	        } else {  // all per-frame weights are 1.0,
 	          weights.Resize(mat.NumRows());
 	          weights.Set(1.0);
 	        }
 	        // multiply with per-utterance weight,
-	        if (utt_weights != "") {
+	        if (parallel_opts.utt_weights != "") {
 	          BaseFloat w = utt_weights_reader.Value(utt);
 	          KALDI_ASSERT(w >= 0.0);
 	          if (w == 0.0) continue;  // remove sentence from training,
 	          weights.Scale(w);
 	        }
-			NnetExample example(utt, feature_reader.Value(), targets_reader.Value(), weights)
+			NnetExample example(utt, mat, targets_reader.Value(), weights)
 
 			repository.AcceptExamples(&example);
 		}

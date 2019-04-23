@@ -29,6 +29,7 @@
 #include "base/kaldi-common.h"
 #include "util/common-utils.h"
 #include "nnet4/nnet-randomizer.h"
+#include "hmm/posterior.h"
 
 
 
@@ -54,7 +55,7 @@ public:
 
 	void AcceptExamples(NnetExample* example);
 
-	void ExamplesDone();
+	bool ExamplesDone();
 
 	bool ProvideExamples(NnetExample* example);
 

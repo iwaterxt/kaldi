@@ -27,6 +27,7 @@
 #include "nnet4/nnet-trnopts.h"
 #include "nnet4/nnet-example.h"
 #include "nnet4/nnet-randomizer.h"
+#include "hmm/posterior.h"
 
 
 namespace kaldi{
@@ -117,6 +118,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 						  RandomAccessBaseFloatVectorReader& weights_reader,
 						  RandomAccessBaseFloatReader& utt_weights_reader,
 						  NnetTrainOptions& trn_opts,
+						  LossOptions& loss_opts,
 						  NnetDataRandomizerOptions& rnd_opts,
 						  NnetParallelTrainOptions& parallel_opts,
 						  std::string& target_model_filename);
