@@ -181,6 +181,7 @@ double DNNDoBackpropParallel(const Nnet& nnet,
 	DNNDoBackpropParallelClass c(nnet,
 								 repository,
 								 trn_opts,
+								 loss_opts,
 								 rnd_opts,
 								 parallel_opts,
 								 target_model_filename);
