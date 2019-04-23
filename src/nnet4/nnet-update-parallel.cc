@@ -73,16 +73,16 @@ public:
 		int32 total_frames = 0;
 		while(1){
 
-			NnetExample* example;
-			while(repository_->ProvideExamples(example)){
+			NnetExample example;
+			while(repository_->ProvideExamples(&example)){
 		        if (feature_randomizer.IsFull()) {
 		          // break the loop without calling Next(),
 		          // we keep the 'utt' for next round,
 		          break;
 		        }
-				Matrix<BaseFloat> mat = example->mat_;
-				Posterior targets = example->tgt_;
-				Vector<BaseFloat> weights = example->weight_;
+				Matrix<BaseFloat> mat = example.mat_;
+				Posterior targets = example.tgt_;
+				Vector<BaseFloat> weights = example.weight_;
 
 				nnet_transf.Feedforward(CuMatrix<BaseFloat>(mat), &feats_transf);
 		        // remove frames with '0' weight from training,
