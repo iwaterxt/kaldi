@@ -175,7 +175,7 @@ int main(int argc, char *argv[]) {
     // - all paths crossing a frame share same 'C_frame',
     // - with GMM, we also have the unnormalized acoustic likelihoods,
     if (nnet.GetLastComponent().GetType() ==
-        kaldi::nnet1::Component::kSoftmax) {
+        kaldi::nnet4::Component::kSoftmax) {
       KALDI_LOG << "Removing softmax from the nnet " << model_filename;
       nnet.RemoveLastComponent();
     } else {

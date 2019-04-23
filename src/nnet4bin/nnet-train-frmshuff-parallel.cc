@@ -51,8 +51,7 @@ int main(int argc, char *argv[]) {
     parallel_opts.Register(&po);
 
     po.Read(argc, argv);
-
-    if (po.NumArgs() != 3 + (crossvalidate ? 0 : 1)) {
+    if (po.NumArgs() != 3 + (parallel_opts.crossvalidate ? 0 : 1)) {
       po.PrintUsage();
       exit(1);
     }
@@ -75,8 +74,7 @@ int main(int argc, char *argv[]) {
     nnet.Read(model_filename);
     nnet.SetTrainOptions(trn_opts);
 
-    if (crossvalidate) {
-      nnet_transf.SetDropoutRate(0.0);
+    if (parallel_opts.crossvalidate) {
       nnet.SetDropoutRate(0.0);
     }
 
@@ -85,19 +83,19 @@ int main(int argc, char *argv[]) {
     SequentialBaseFloatMatrixReader feature_reader(feature_rspecifier);
     RandomAccessPosteriorReader targets_reader(targets_rspecifier);
     RandomAccessBaseFloatVectorReader weights_reader;
-    if (frame_weights != "") {
+    if (parallel_opts.frame_weights != "") {
       weights_reader.Open(frame_weights);
     }
     RandomAccessBaseFloatReader utt_weights_reader;
-    if (utt_weights != "") {
+    if (parallel_opts.utt_weights != "") {
       utt_weights_reader.Open(utt_weights);
     }
 
     DNNDoBackpropParallel(nnet,
     				   feature_reader,
     				   targets_reader,
-    				   weight_reader,
-    				   utt_weightd_reader,
+    				   weights_reader,
+    				   utt_weights_reader,
     				   trn_opts,
                loss_opts,
     				   rnd_opts,
