@@ -84,7 +84,7 @@ void LatticeAcousticRescore(const Matrix<BaseFloat> &log_like,
 
 int main(int argc, char *argv[]) {
   using namespace kaldi;
-  using namespace kaldi::nnet1;
+  using namespace kaldi::nnet4;
   typedef kaldi::int32 int32;
   try {
     const char *usage =

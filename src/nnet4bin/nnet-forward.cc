@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
         "yes|no|optional, only has effect if compiled with CUDA");
 
     using namespace kaldi;
-    using namespace kaldi::nnet1;
+    using namespace kaldi::nnet4;
     typedef kaldi::int32 int32;
 
     po.Read(argc, argv);
