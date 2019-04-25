@@ -61,7 +61,7 @@ bool ExamplesRepository::ProvideExamples(NnetExample *example) {
     // the call by the next thread will not block.
     return false; // no examples to return-- all finished.
   } else {
-  	examples = examples_.front();
+  	example = examples_.front();
   	examples_.erase(examples_.begin());
     empty_semaphore_.Signal();
     return true;
