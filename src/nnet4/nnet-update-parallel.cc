@@ -74,25 +74,24 @@ public:
 		while(1){
 
 			NnetExample example;
-			while(repository_->ProvideExamples(&example)){
-		        if (feature_randomizer.IsFull()) {
-		          // break the loop without calling Next(),
-		          // we keep the 'utt' for next round,
-		          break;
-		        }
+			while(!repository_->ExamplesDone() && repository_->ProvideExamples(&example)){
+
 				Matrix<BaseFloat> mat = example.mat_;
 				Posterior targets = example.tgt_;
 				Vector<BaseFloat> weights = example.weight_;
 
 				nnet_transf.Feedforward(CuMatrix<BaseFloat>(mat), &feats_transf);
-		        // remove frames with '0' weight from training,
-
 		        // pass data to randomizers,
 		        KALDI_ASSERT(feats_transf.NumRows() == targets.size());
 		        feature_randomizer.AddData(feats_transf);
 		        targets_randomizer.AddData(targets);
 		        weights_randomizer.AddData(weights);
 		        num_done++;
+		        if (feature_randomizer.IsFull()) {
+		          // break the loop without calling Next(),
+		          // we keep the 'utt' for next round,
+		          break;
+		        }
 			}
 		  // randomize,
 		  if (!parallel_opts_.crossvalidate && parallel_opts_.randomize) {
@@ -144,9 +143,10 @@ public:
 		        total_frames += nnet_in.NumRows();
 		  }
 
-		  if(repository_->ExamplesDone()){
-		    break;
-		  }
+			if(repository_->ExamplesDone()){
+				break;
+			}
+
 		}
 
 
