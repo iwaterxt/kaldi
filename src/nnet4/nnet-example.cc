@@ -46,7 +46,7 @@ void ExamplesRepository::AcceptExamples(NnetExample *example) {
   full_semaphore_.Signal();
 }
 
-bool ExamplesRepository::ExamplesDone() {
+void ExamplesRepository::ExamplesDone() {
   empty_semaphore_.Wait();
   KALDI_ASSERT(examples_.empty());
   done_ = true;
