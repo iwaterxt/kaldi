@@ -26,8 +26,8 @@
 #include <algorithm>
 #include <sstream>
 
-#include "nnet/nnet-component.h"
-#include "nnet/nnet-utils.h"
+#include "nnet4/nnet-component.h"
+#include "nnet4/nnet-utils.h"
 #include "cudamatrix/cu-math.h"
 #include "util/text-utils.h"
 
