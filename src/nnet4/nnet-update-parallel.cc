@@ -79,6 +79,29 @@ public:
 				Matrix<BaseFloat> mat = example.mat_;
 				Posterior targets = example.tgt_;
 				Vector<BaseFloat> weights = example.weight_;
+        // correct small length mismatch or drop sentence,
+        {
+          // add lengths to vector,
+          std::vector<int32> length;
+          length.push_back(mat.NumRows());
+          length.push_back(targets.size());
+          length.push_back(weights.Dim());
+          // find min, max,
+          int32 min = *std::min_element(length.begin(), length.end());
+          int32 max = *std::max_element(length.begin(), length.end());
+          // fix or drop ?
+          if (max - min < parallel_opts_.length_tolerance) {
+            // we truncate to shortest,
+            if (mat.NumRows() != min) mat.Resize(min, mat.NumCols(), kCopyData);
+            if (targets.size() != min) targets.resize(min);
+            if (weights.Dim() != min) weights.Resize(min, kCopyData);
+          } else {
+            KALDI_WARN << "Length mismatch! Targets " << targets.size()
+                       << ", features " << mat.NumRows() << ", " << utt;
+            continue;
+          }
+        }
+
 
 				nnet_transf.Feedforward(CuMatrix<BaseFloat>(mat), &feats_transf);
 		        // pass data to randomizers,
