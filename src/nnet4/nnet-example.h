@@ -55,7 +55,7 @@ public:
 
 	void AcceptExamples(NnetExample* example);
 
-	bool ExamplesDone();
+	void ExamplesDone();
 
 	bool ProvideExamples(NnetExample* example);
 

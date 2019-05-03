@@ -46,25 +46,21 @@ void ExamplesRepository::AcceptExamples(NnetExample *example) {
   full_semaphore_.Signal();
 }
 
-bool ExamplesRepository::ExamplesDone() {
-  empty_semaphore_.Wait();
-  if(examples_.empty()){
-      done_ = true;
-      return true ;
-  }else{
-      return false;
-  }
-
-  full_semaphore_.Signal();
+void ExamplesRepository::ExamplesDone() {
+  done_ = true;
 }
 
 bool ExamplesRepository::ProvideExamples(NnetExample *example) {
   full_semaphore_.Wait();
   if (done_) {
-    KALDI_ASSERT(examples_.empty());
-    full_semaphore_.Signal(); // Increment the semaphore so
-    // the call by the next thread will not block.
-    return false; // no examples to return-- all finished.
+    if(examples_.empty()){
+      full_semaphore_.Signal();
+      return false;
+    }else{
+      example = examples_.front();
+  	  examples_.erase(examples_.begin());
+      return true;
+    }
   } else {
   	example = examples_.front();
   	examples_.erase(examples_.begin());

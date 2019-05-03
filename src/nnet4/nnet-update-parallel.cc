@@ -74,7 +74,7 @@ public:
 		while(1){
 
 			NnetExample example;
-			while(!repository_->ExamplesDone() && repository_->ProvideExamples(&example)){
+			while( repository_->ProvideExamples(&example)){
 
 				Matrix<BaseFloat> mat = example.mat_;
 				Posterior targets = example.tgt_;
@@ -104,17 +104,17 @@ public:
 
 
 				nnet_transf.Feedforward(CuMatrix<BaseFloat>(mat), &feats_transf);
-		        // pass data to randomizers,
-		        KALDI_ASSERT(feats_transf.NumRows() == targets.size());
-		        feature_randomizer.AddData(feats_transf);
-		        targets_randomizer.AddData(targets);
-		        weights_randomizer.AddData(weights);
-		        num_done++;
-		        if (feature_randomizer.IsFull()) {
-		          // break the loop without calling Next(),
-		          // we keep the 'utt' for next round,
-		          break;
-		        }
+		    // pass data to randomizers,
+		    KALDI_ASSERT(feats_transf.NumRows() == targets.size());
+		    feature_randomizer.AddData(feats_transf);
+		    targets_randomizer.AddData(targets);
+		    weights_randomizer.AddData(weights);
+		    num_done++;
+		    if (feature_randomizer.IsFull()) {
+		      // break the loop without calling Next(),
+		      // we keep the 'utt' for next round,
+		      break;
+		    }
 			}
 		  // randomize,
 		  if (!parallel_opts_.crossvalidate && parallel_opts_.randomize) {
@@ -248,11 +248,11 @@ void DNNDoBackpropParallel(const Nnet& nnet,
 	          if (w == 0.0) continue;  // remove sentence from training,
 	          weights.Scale(w);
 	        }
-			NnetExample example(utt, mat, targets, weights);
+					NnetExample example(utt, mat, targets, weights);
 
-			repository.AcceptExamples(&example);
+					repository.AcceptExamples(&example);
 		}
-
+		repository.ExamplesDone();
 
 }
 
