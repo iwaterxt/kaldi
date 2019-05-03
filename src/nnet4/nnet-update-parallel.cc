@@ -79,6 +79,7 @@ public:
 				Matrix<BaseFloat> mat = example.mat_;
 				Posterior targets = example.tgt_;
 				Vector<BaseFloat> weights = example.weight_;
+				std::string utt = example.key_;
         // correct small length mismatch or drop sentence,
         {
           // add lengths to vector,
