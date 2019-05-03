@@ -46,8 +46,21 @@ void ExamplesRepository::AcceptExamples(NnetExample *example) {
   full_semaphore_.Signal();
 }
 
-void ExamplesRepository::ExamplesDone() {
+void ExamplesRepository::ExamplesAcceptDone() {
   done_ = true;
+}
+
+bool ExamplesRepository::ExampleEnd(){
+  
+  if(done_){
+    if(examples_.empty()){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
+    return false;
+  }
 }
 
 bool ExamplesRepository::ProvideExamples(NnetExample *example) {

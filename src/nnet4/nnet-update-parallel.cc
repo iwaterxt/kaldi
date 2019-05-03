@@ -74,7 +74,7 @@ public:
 		while(1){
 
 			NnetExample example;
-			while( repository_->ProvideExamples(&example)){
+			while(repository_->ProvideExamples(&example)){
 
 				Matrix<BaseFloat> mat = example.mat_;
 				Posterior targets = example.tgt_;
@@ -167,10 +167,9 @@ public:
 		        total_frames += nnet_in.NumRows();
 		  }
 
-			if(repository_->ExamplesDone()){
+			if(ExampleEnd()){
 				break;
 			}
-
 		}
 
 
@@ -253,7 +252,7 @@ void DNNDoBackpropParallel(const Nnet& nnet,
 
 					repository.AcceptExamples(&example);
 		}
-		repository.ExamplesDone();
+		repository.ExamplesAcceptDone();
 
 }
 
