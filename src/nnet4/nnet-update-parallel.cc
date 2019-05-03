@@ -167,7 +167,7 @@ public:
 		        total_frames += nnet_in.NumRows();
 		  }
 
-			if(ExampleEnd()){
+			if(repository_->ExamplesEnd()){
 				break;
 			}
 		}

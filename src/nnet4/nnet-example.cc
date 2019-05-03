@@ -50,8 +50,8 @@ void ExamplesRepository::ExamplesAcceptDone() {
   done_ = true;
 }
 
-bool ExamplesRepository::ExampleEnd(){
-  
+bool ExamplesRepository::ExamplesEnd(){
+
   if(done_){
     if(examples_.empty()){
       return true;
